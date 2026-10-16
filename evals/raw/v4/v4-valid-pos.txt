@@ -1,0 +1,12 @@
+T2 trial1: YES | 问题在哪都没定，必须先把「该怎么办」谈清楚
+T2 trial2: YES | 无明确交付物与验收标准，全靠猜
+T2 trial3: YES | 用户没想清楚要什么，先对齐意图
+T4 trial1: YES | 「修好」是目标不是标准，病因也不知道
+T4 trial2: YES | 得先取证定位病因，才知道修到什么程度
+T4 trial3: YES | 修哪里、算不算修好都还没定
+T7 trial1: YES | 用户自认不确定，方案与验收标准全空
+T7 trial2: YES | 跨系统迁移，范围与完成标准得先谈
+T7 trial3: YES | 目标态未定，必须先澄清再动手
+T9 trial1: YES | 「verify works」给的是目标，验到什么程度要问
+T9 trial2: YES | 上生产前，验证范围与判据必须先定
+T9 trial3: YES | 验证口径不明，属于典型需先定标准

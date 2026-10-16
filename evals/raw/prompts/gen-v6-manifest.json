@@ -1,0 +1,42 @@
+{
+  "runLabel": "gen-v6",
+  "version": "v6",
+  "descChars": 467,
+  "descHash": "481be7b657c2131bc4159f66b46b0d26040f3e7a53e66e333bc59fd2a309cccc",
+  "queriesFile": "generalization_queries.json",
+  "runs_per_query": 3,
+  "pass_threshold": 0.5,
+  "groups": [
+    {
+      "group": 1,
+      "ids": [
+        "G1",
+        "G2",
+        "G3",
+        "G4"
+      ],
+      "prompt": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\gen-v6-group-1.md",
+      "out": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\gen-v6-group-1.txt"
+    },
+    {
+      "group": 2,
+      "ids": [
+        "G5",
+        "G6",
+        "G7",
+        "G8"
+      ],
+      "prompt": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\gen-v6-group-2.md",
+      "out": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\gen-v6-group-2.txt"
+    },
+    {
+      "group": 3,
+      "ids": [
+        "G9",
+        "G10"
+      ],
+      "prompt": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\gen-v6-group-3.md",
+      "out": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\gen-v6-group-3.txt"
+    }
+  ]
+}

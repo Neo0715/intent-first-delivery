@@ -1,0 +1,33 @@
+{
+  "note": "触发评测集。判定标准：一条消息是否「必须先澄清意图/先定验收标准/先取证」才能保证做对。最重要的负例是「近义误触发」——和本技能主题相近、但一句话就能说清动作和范围的活。",
+  "spec": "https://agentskills.io/skill-creation/optimizing-descriptions",
+  "defaults": { "runs_per_query": 3, "pass_threshold": 0.5 },
+  "split": {
+    "train": ["T1", "T3", "T5", "T6", "T8", "T10", "N1", "N4", "N5", "N6", "N8", "N10", "N12"],
+    "validation": ["T2", "T4", "T7", "T9", "N2", "N3", "N7", "N9", "N11"]
+  },
+  "queries": [
+    { "id": "T1", "query": "帮我把这个项目的日志模块重构一下，现在是到处 print，我想要个统一的东西", "should_trigger": true, "why": "目标含糊：「统一的东西」有多种理解，且跨多文件" },
+    { "id": "T2", "query": "我们的用户老是说找不到想要的东西，你帮我看看该怎么办", "should_trigger": true, "why": "症状描述，连问题域都没定，需要先取证+澄清" },
+    { "id": "T3", "query": "调查一下现在国内做 AI Agent 的公司都在用什么记忆方案，整理一份给我，下周要给老板讲", "should_trigger": true, "why": "调研类交付物，受众和深度都没定" },
+    { "id": "T4", "query": "导出 CSV 的功能上周还好好的，今天客户说导出来的文件打不开，你修一下", "should_trigger": true, "why": "排障类：「修好」是目标不是验收标准，需要先复现取证" },
+    { "id": "T5", "query": "写个脚本把 data/ 下面那些 csv 合起来。哦对了，其中有几个文件格式跟别的不一样，你看着办", "should_trigger": true, "why": "「你看着办」= 明确把决定权交给 agent，必须先问口径" },
+    { "id": "T6", "query": "把 docs/ 里过期的 API 说明清理一下", "should_trigger": true, "why": "「过期」判定标准未定，且清理含删除" },
+    { "id": "T7", "query": "把我们这个审批流程搬到飞书上，具体怎么弄我也不太确定", "should_trigger": true, "why": "用户明说自己没想清楚" },
+    { "id": "T8", "query": "上次你帮我做的那个季度汇报 PPT 老板说方向不对，得重做……我也说不太清他想要啥，你先弄着", "should_trigger": true, "why": "「上次做的不是我想要的」+ 用户说不清" },
+    { "id": "T9", "query": "verify the migration script works before we run it on prod on Friday", "should_trigger": true, "why": "「works」不是可验证标准，且卡着不可逆的生产操作" },
+    { "id": "T10", "query": "优化一下首页的加载速度", "should_trigger": true, "why": "没有指标和基线，优化目标未定义" },
+    { "id": "N1", "query": "把 README 里第 12 行那个 Geting Started 改成 Getting Started", "should_trigger": false, "why": "近义误触发测验：一句话说清位置和改法，机械替换" },
+    { "id": "N2", "query": "这个 zsh 脚本第 8 行的变量名拼错了，帮我改对", "should_trigger": false, "why": "近义误触发测验：改动点与正确写法都明确" },
+    { "id": "N3", "query": "React 19 的 useOptimistic 怎么用？给我个例子", "should_trigger": false, "why": "知识问答，无交付物" },
+    { "id": "N4", "query": "python 里怎么把 dict 按 value 排序，我老忘", "should_trigger": false, "why": "知识问答" },
+    { "id": "N5", "query": "把 conf/app.toml 里的 timeout 从 30 调到 60，然后重启一下服务", "should_trigger": false, "why": "近义误触发测验：含「改配置+重启」两个动作，但值与范围全给全了" },
+    { "id": "N6", "query": "在 https://github.com/foo/bar/blob/main/README.md 这个文件里，把 Installation 那一节改成用 pnpm 安装的说明，内容我写好了：pnpm add foo", "should_trigger": false, "why": "近义误触发测验：位置、改法、内容全给全，只剩执行（这是 v1 的误触发案例）" },
+    { "id": "N7", "query": "你能干啥？", "should_trigger": false, "why": "能力问询，无任务" },
+    { "id": "N8", "query": "给我写个快排，输入是 int 数组，输出从小到大的数组", "should_trigger": false, "why": "输入输出规格完备，验收标准已给定" },
+    { "id": "N9", "query": "帮我删掉 ~/Downloads 下面所有 .tmp 文件", "should_trigger": false, "why": "近义误触发测验：含删除（不可逆），但范围被精确限定、动作唯一——证明「不可逆」本身不构成触发条件（这是 v1 的误触发案例）" },
+    { "id": "N10", "query": "帮我把这份 json 转成 yaml，文件在 ~/data/config.json", "should_trigger": false, "why": "机械转换，有唯一正确结果" },
+    { "id": "N11", "query": "这个正则 (\\d{4})-(\\d{2}) 为什么匹配不上 2024-1？", "should_trigger": false, "why": "单一事实解释，答案唯一" },
+    { "id": "N12", "query": "介绍下你自己", "should_trigger": false, "why": "闲聊，无交付物" }
+  ]
+}

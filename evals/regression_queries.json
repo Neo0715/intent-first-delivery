@@ -1,0 +1,20 @@
+{
+  "note": "回归集（也可叫「v4 后保留集」）。这 12 条写于 v4 description 定稿之后，但 v5→v6 的改动理由直接引用了其中的 N14（全仓 fooBar 重命名，用来解释为什么去掉「批量」这个触发词），所以它们已经参与过优化决策，**不能再称为「从未参与优化的泛化集」**。本文件保留它们的作用是：回归检测——后续任何改动后重跑，看已通过的查询有没有退化。",
+  "spec": "https://agentskills.io/skill-creation/optimizing-descriptions",
+  "purpose": "回归检测。分数口径是【回归集分数】，不是泛化分数。v6 的泛化验收另见 generalization_queries.json（10 条，从未用于 v1–v6 任何一轮 description 修改）。任何基于本批结果又去改 description 的做法，都会让它从「回归集」彻底退化为普通迭代集。",
+  "defaults": { "runs_per_query": 3, "pass_threshold": 0.5 },
+  "queries": [
+    { "id": "T11", "query": "这个接口返回太慢了，想办法让它快一点", "should_trigger": true, "why": "「快一点」没有指标、没有基线、没说是哪个接口的哪一段 —— 目标不是标准" },
+    { "id": "T12", "query": "帮我把这一堆线上事故报告总结一下，看看有没有什么规律，我想在组里讲讲", "should_trigger": true, "why": "摘要给谁讲、讲到什么粒度、什么算「有规律」都没定" },
+    { "id": "T13", "query": "我想给项目加个缓存，你看看怎么加比较合适", "should_trigger": true, "why": "「加缓存」是从解法出发的诉求，要缓存什么、解决什么现象、一致性要求全空" },
+    { "id": "T14", "query": "把我们的这个服务容器化一下", "should_trigger": true, "why": "范围含多文件多配置，「容器化到什么程度」有多种合理解读（本地跑 / 上 k8s / 加 CI）" },
+    { "id": "N13", "query": "把 ~/backups 里一个月前的文件删掉，释放点空间", "should_trigger": false, "why": "近义误触发测验：批量 + 不可逆，但范围（一个月前）与动作都说死了 —— 同一族里最难的那一档" },
+    { "id": "N14", "query": "帮我把这个仓库里所有 fooBar 重命名成 foo_bar", "should_trigger": false, "why": "近义误触发测验：看着像重构（跨多文件），其实动作唯一、范围由字面量锁定。**就是这条被写进了 v5→v6 的改动理由，因此本批已不再是泛化集**" },
+    { "id": "N15", "query": "把 config.json 里的 debug 改成 false", "should_trigger": false, "why": "单键单值，机械修改" },
+    { "id": "N16", "query": "帮我把这段报错信息翻译成中文", "should_trigger": false, "why": "机械转换，无交付决策" },
+    { "id": "N17", "query": "这个 SQL 为什么查不出数据？我把语句贴给你看：SELECT * FROM users WHERE age > '30'", "should_trigger": false, "why": "单一事实解释（类型隐式转换），答案唯一" },
+    { "id": "N18", "query": "把 Dockerfile 里的 node:18 换成 node:20，然后重新构建一下镜像", "should_trigger": false, "why": "近义误触发测验：含构建（像是有风险的动作），但改动点与目标版本都指定了" },
+    { "id": "N19", "query": "帮我起个变量名，存用户上次登录时间", "should_trigger": false, "why": "微决策，一句话就能给" },
+    { "id": "N20", "query": "把刚才那个 ts 文件里的 TODO 注释都列出来给我看看", "should_trigger": false, "why": "只读列举，无交付决策" }
+  ]
+}

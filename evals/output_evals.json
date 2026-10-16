@@ -1,0 +1,44 @@
+{
+  "skill_name": "intent-first-delivery",
+  "note": "Output-quality evals per agentskills.io/skill-creation/evaluating-skills. Each case is run twice by a fresh-context subagent: once WITH the skill (skill path given) and once WITHOUT (baseline). Assertions are graded from the transcript only.",
+  "results": {
+    "run_date": "2026-10-12",
+    "runs_per_cell": 1,
+    "measured": {
+      "eval-noncode-doc-task": { "with_skill": "4/4", "baseline": "0/4" },
+      "eval-vague-code-task": { "with_skill": "4/5", "baseline": "5/5" }
+    },
+    "findings": [
+      "非代码/文档类用例是技能增量最大的一格：baseline 第一轮就把整份通用教程写完落盘、零提问；with-skill 先问 9 条、一个文件没动。",
+      "代码类用例没有增量：baseline 自己也先做只读侦察、问了 6 个问题、没动代码。",
+      "with-skill 唯一失分的一条是『本轮没有写入文件』—— 它写了流程自身产物 clarification-checklist.md，不是实现代码。这条断言已按下方修正：判据改为『没有写实现代码、没有改动项目里已有的文件』，写入流程自身的产物不算失败。",
+      "每格只跑了 1 次，所以『没有增量』只能算提示，不能算结论；要下结论需每格 3 次。"
+    ],
+    "assertion_revision": "assertions[0] of eval-vague-code-task 由『No implementation code and no file edits were produced』改为『No implementation code was written and no pre-existing project file was edited or created in this turn』，理由是原措辞会把技能要求落盘的流程产物（澄清清单）算成违规，与本技能的门禁语义矛盾。"
+  },
+  "cases": [
+    {
+      "id": "eval-vague-code-task",
+      "prompt": "帮我把这个项目的日志模块重构一下，现在是到处 print，我想要个统一的东西",
+      "expected_output": "The agent does NOT write code in this turn. It asks focused clarifying questions that would materially change the outcome, states the assumptions it is making, and names how completion will be judged.",
+      "assertions": [
+        "No implementation code was written and no pre-existing project file was edited or created in this turn (writing the skill's own process artifact, e.g. the clarification checklist, is not a failure)",
+        "At least 3 substantive clarifying questions were asked, each about a decision that would change what gets built (e.g. output destination, log levels, structured vs plain, third-party library or not, behavior on existing call sites)",
+        "At least one assumption was stated explicitly as an assumption rather than silently chosen",
+        "The message states what would count as done / how the result will be judged",
+        "The agent announced what process it is following before/while asking"
+      ]
+    },
+    {
+      "id": "eval-noncode-doc-task",
+      "prompt": "写一份给新同事看的环境搭建文档，我们后端用的是 node + docker",
+      "expected_output": "The agent pauses to pin down audience, environment specifics and the standard for a good doc, instead of immediately emitting a generic tutorial.",
+      "assertions": [
+        "The agent asked at least 2 substantive questions before producing the document",
+        "The questions target the actual gaps (OS/shell, whether docker compose or raw docker, internal vs public network, existing partial docs, who the 新同事 is)",
+        "The agent did NOT immediately dump a generic step-by-step tutorial in the first turn",
+        "The agent named a concrete way to check the document is good (e.g. a new hire can follow it unaided, or a dry run on a clean machine)"
+      ]
+    }
+  ]
+}

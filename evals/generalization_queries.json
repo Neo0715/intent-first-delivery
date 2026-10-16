@@ -1,0 +1,18 @@
+{
+  "note": "v6 的泛化检查集（generalization set）。这 10 条在 v6 description 定稿之前从未出现过，也从未用于 v1–v6 任何一轮 description 修改；前 34 条（迭代集 22 + 回归集 12）的任何一轮优化都没见过它们。用途只有一个：验收 v6 是否真的泛化，而不是背下了前面那些查询。",
+  "spec": "https://agentskills.io/skill-creation/optimizing-descriptions",
+  "purpose": "只验收，不参与改描述。测完之后不得再根据这批查询修改 description；若确需改 description，必须另写一批从未使用过的新查询，本批随即降级为回归集。",
+  "defaults": { "runs_per_query": 3, "pass_threshold": 0.5 },
+  "queries": [
+    { "id": "G1", "query": "帮我做个客户投诉的分类方案，客服那边想按这个来分流", "should_trigger": true, "why": "方案类交付物：分类维度、粒度、边界全未定" },
+    { "id": "G2", "query": "把这个老系统的文档补一补，新来的同事看不懂", "should_trigger": true, "why": "文档类：「看不懂」是症状不是标准，补到什么程度、给谁看都未定" },
+    { "id": "G3", "query": "我们的 CI 太慢了，你看看怎么优化", "should_trigger": true, "why": "无指标、无基线、优化目标未定义" },
+    { "id": "G4", "query": "给我整理一份竞品分析，下周要在会上用", "should_trigger": true, "why": "调研/交付物：受众、深度、对比维度均未定" },
+    { "id": "G5", "query": "帮我写个脚本，每天自动备份数据库，出问题要能发现", "should_trigger": true, "why": "备份策略、保留周期、「出问题」的判定标准全空" },
+    { "id": "G6", "query": "把 server.js 第 42 行的端口 3000 改成 8080", "should_trigger": false, "why": "单点明确修改，位置与值都给全" },
+    { "id": "G7", "query": "帮我把 data/out.csv 里的空行删掉", "should_trigger": false, "why": "机械清理，文件与动作明确" },
+    { "id": "G8", "query": "React 里 useEffect 的依赖数组传空数组是什么意思？", "should_trigger": false, "why": "知识问答，无交付物" },
+    { "id": "G9", "query": "把 ~/logs 下面超过 7 天的 .log 文件删掉", "should_trigger": false, "why": "近义误触发测验：不可逆删除，但范围（超过 7 天）与动作明确——与 N9 / N13 同一族，用来检验「不可逆」这条触发条件是否会稳定压过硬性范围限定" },
+    { "id": "G10", "query": "把项目里所有 console.log 都去掉", "should_trigger": false, "why": "近义误触发测验：批量、看着像重构，但动作唯一、可逆——与 N14 同一族" }
+  ]
+}

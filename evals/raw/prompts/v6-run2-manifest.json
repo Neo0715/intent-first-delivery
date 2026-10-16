@@ -1,0 +1,75 @@
+{
+  "runLabel": "v6-run2",
+  "version": "v6",
+  "descChars": 467,
+  "descHash": "481be7b657c2131bc4159f66b46b0d26040f3e7a53e66e333bc59fd2a309cccc",
+  "queriesFile": "trigger_queries.json",
+  "runs_per_query": 3,
+  "pass_threshold": 0.5,
+  "groups": [
+    {
+      "group": 1,
+      "ids": [
+        "T1",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "prompt": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\v6-run2-group-1.md",
+      "out": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\v6-run2-group-1.txt"
+    },
+    {
+      "group": 2,
+      "ids": [
+        "T5",
+        "T6",
+        "T7",
+        "T8"
+      ],
+      "prompt": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\v6-run2-group-2.md",
+      "out": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\v6-run2-group-2.txt"
+    },
+    {
+      "group": 3,
+      "ids": [
+        "T9",
+        "T10",
+        "N1",
+        "N2"
+      ],
+      "prompt": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\v6-run2-group-3.md",
+      "out": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\v6-run2-group-3.txt"
+    },
+    {
+      "group": 4,
+      "ids": [
+        "N3",
+        "N4",
+        "N5",
+        "N6"
+      ],
+      "prompt": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\v6-run2-group-4.md",
+      "out": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\v6-run2-group-4.txt"
+    },
+    {
+      "group": 5,
+      "ids": [
+        "N7",
+        "N8",
+        "N9",
+        "N10"
+      ],
+      "prompt": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\v6-run2-group-5.md",
+      "out": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\v6-run2-group-5.txt"
+    },
+    {
+      "group": 6,
+      "ids": [
+        "N11",
+        "N12"
+      ],
+      "prompt": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\v6-run2-group-6.md",
+      "out": "F:\\Agents\\Outputs\\intent-first-delivery-v2\\evals\\raw\\prompts\\v6-run2-group-6.txt"
+    }
+  ]
+}
