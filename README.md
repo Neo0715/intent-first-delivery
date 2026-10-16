@@ -1,5 +1,10 @@
 # 意图优先交付流程（Intent-First Delivery）
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/Neo0715/intent-first-delivery?sort=semver)](https://github.com/Neo0715/intent-first-delivery/releases)
+[![Stars](https://img.shields.io/github/stars/Neo0715/intent-first-delivery)](https://github.com/Neo0715/intent-first-delivery/stargazers)
+![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-2ea44f.svg)
+
 一个 agent skill 包，解决一个具体问题：**agent 没搞清你要什么就开始做，交付后才发现不是你要的。**
 
 ## 装到哪里
