@@ -1,0 +1,4 @@
+# 统一行尾：仓库内一律 LF，检出到任何平台都用 LF。
+# 这是为了让 Windows 用户 clone 下来的文件与本仓库发布的 ZIP 逐字节一致
+# （Windows 上系统级 core.autocrlf=true 时，默认会检成 CRLF）。
+* text=auto eol=lf
