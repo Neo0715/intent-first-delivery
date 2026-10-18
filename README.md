@@ -5,6 +5,8 @@
 [![Stars](https://img.shields.io/github/stars/Neo0715/intent-first-delivery)](https://github.com/Neo0715/intent-first-delivery/stargazers)
 ![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-2ea44f.svg)
 
+<img src="assets/cover.jpg" alt="意图优先交付 —— 动手之前，先确认「做成什么样才算对」" width="400">
+
 一个 agent skill 包，解决一个具体问题：**agent 没搞清你要什么就开始做，交付后才发现不是你要的。**
 
 ## 装到哪里
@@ -33,7 +35,8 @@ intent-first-delivery/
 │   ├── prd.md                        需求文档（只写 What/Why）
 │   ├── acceptance-evidence.md        验收证据（逐条对照 + 原始输出）
 │   ├── convergence-report.md         收敛报告（缺口回流直至收敛）
-│   └── quick-reference.md            一页速查
+│   ├── quick-reference.md            一页速查
+│   └── cover.jpg                     封面图（README 展示用，流程不引用）
 ├── evals/                            评测集（可复跑）
 │   ├── trigger_queries.json          迭代集：22 条 + 应触发标注 + 理由 + train/validation 划分
 │   ├── regression_queries.json       回归集：12 条（原 fresh_queries.json，已按审计改标）
@@ -71,6 +74,13 @@ intent-first-delivery/
 **只看速查**：单独把 `assets/quick-reference.md` 给人看，一页讲清全流程。
 
 **想省事但要保证质量**：说「直接做，但做完把假设列给我」—— 这会触发**「用户已授权」豁免，只跳过 ① 的提问环节**，②③ 该做的照做（假设要列全，计划仍要过目）。真正想连计划都不看，就直接说「别走流程，直接做完给我」—— 注意**证据这一步永远不豁免**。
+
+**复制下面这段直接用**（发给任何装了本技能的 agent 都行）：
+
+```text
+帮我把这件事做对：<你要做的事>。
+动手之前，先按「意图优先交付」跟我对齐——要什么、做成什么样才算对、哪些不能碰，拿到我的确认再开工。
+```
 
 ## 自检这个包是否合规
 
@@ -188,3 +198,7 @@ node evals/tools/validate-spec.mjs .
 ## 一句话总结
 
 **没搞清楚要什么之前，不许动手；做完了要拿证据说话，并且回头核对是不是真做对了。**
+
+---
+
+封面图由豆包（Doubao）生成。
