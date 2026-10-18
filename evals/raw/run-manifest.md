@@ -65,3 +65,16 @@
 
 本目录所有数字都是「只看 `name`+`description` 的判定器」给出的**【描述分类代理指标】**，
 不是目标 agent 的实际技能触发率，也不是触发率下界。真实触发率需在真实 agent 会话中端到端测量（本环境无该能力）。
+
+## 路径改写说明（v1.0.2）
+
+`raw/prompts/*.md` 里「落盘要求」写的是判定当时的绝对路径
+`F:\Agents\Outputs\intent-first-delivery-v2\...`。项目目录迁移后，已改为
+`F:\Agents\DSH_agent_workspace\intent-first-delivery-v2\...`，**共 15 个文件、每份 1 处**。
+
+改的只是「让判定器把结果写到哪」这一行指针；判定提示词的正文、消息、试次要求一律未动，
+因此 `raw/prompts/*.txt` 里的判定结果仍与这些提示词一一对应。
+
+`raw/output-quality/code-with-skill-clarification-checklist.md` 里出现的
+`F:\Agents\Outputs\_evals\...` **保持原样**——那是当时实测「该路径不存在」的记录，
+属于证据本身，不应改写。

@@ -36,5 +36,5 @@
 ## 落盘要求
 
 判断完成后，把上面全部输出**原样写入这个文件**：
-F:\Agents\Outputs\intent-first-delivery-v2\evals\raw\prompts\gen-v6-group-3.txt
+F:\Agents\DSH_agent_workspace\intent-first-delivery-v2\evals\raw\prompts\gen-v6-group-3.txt
 （只写那些 trial 行。如果写文件失败，就把同样内容作为你的回答正文返回。）
